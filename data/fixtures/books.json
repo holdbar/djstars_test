@@ -1,0 +1,32 @@
+[
+  {
+    "model": "core.book",
+    "pk": 1,
+    "fields": {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J. K. Rowling",
+      "ISBN": "0-7475-3269-9",
+      "price": 4.99
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 2,
+    "fields": {
+      "title": "Structure and Interpretation of Computer Programs (2nd ed.)",
+      "author": "Harold Abelson, Gerald Jay Sussman, Julie Sussman",
+      "ISBN": "0-262-51087-1",
+      "price": 12.60
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 3,
+    "fields": {
+      "title": "Dive Into Python",
+      "author": "Mark Pilgrim",
+      "ISBN": "1-59059-356-1",
+      "price": 7.88
+    }
+  }
+]
