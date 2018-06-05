@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="book">
+        <form method="POST"  class="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Add</button>
+        </form>
+        <hr/>
+    </div>
+    {% for form in forms %}
+        <div class="book">
+            <form method="POST"  class="post-form">
+                {% csrf_token %}
+                <input type="hidden" name="pk" value="{{ form.0 }}">
+                {{ form.1.as_p }}
+                <button type="submit" class="save btn btn-default">Save</button>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}

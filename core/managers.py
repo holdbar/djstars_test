@@ -5,5 +5,9 @@ from django.db import models
 class BookManager(models.Manager):
 
     def get_books(self):
-        
+
         return self.all()
+
+    def get_book(self, pk):
+
+        return self.get(pk=pk)
