@@ -4,8 +4,10 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import UserManager
 from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
+from django.db.models.signals import post_save
 
-from core.managers import BookManager, RequestLogManager
+from core.managers import BookManager, RequestLogManager, BookLogManager
+from core.signals import post_save_book
 
 
 class Book(models.Model):
@@ -32,6 +34,7 @@ class Book(models.Model):
 
         return self.title
         
+
 
 class User(AbstractUser):
     """
@@ -65,7 +68,7 @@ class RequestLog(models.Model):
 
     class Meta:
 
-        app_label="core"
+        app_label = "core"
         verbose_name = _("request log")
         verbose_name_plural = _("request logs")
         ordering = ["-created"]
@@ -75,3 +78,27 @@ class RequestLog(models.Model):
         return self.request
 
 
+class BookLog(models.Model):
+    """
+    Book edit log.
+    """
+
+    title = models.CharField(verbose_name=_("title"), max_length=256, db_index=True, editable=False)
+    author = models.CharField(verbose_name=_("author"), max_length=256, db_index=True, editable=False)
+    action = models.CharField(verbose_name=_("action"), max_length=16, db_index=True, editable=False)
+    change_field = models.CharField(verbose_name=_("change field"), max_length=16, blank=True, null=True, db_index=True, editable=False)
+    old_value = models.CharField(verbose_name=_("old value"), max_length=256, blank=True, null=True, editable=False)
+    new_value = models.CharField(verbose_name=_("new value"), max_length=256, blank=True, null=True, editable=False)
+    created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
+
+    objects = BookLogManager()
+
+    class Meta:
+
+        app_label = "core"
+        verbose_name = _("book log")
+        verbose_name_plural = _("book logs")
+        ordering = ["created"]
+
+    
+post_save.connect(post_save_book, sender=Book)

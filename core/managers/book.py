@@ -20,21 +20,4 @@ class BookManager(models.Manager):
     def get_books_desc_publish(self):
 
         return self.all().order_by('-publish_date')
-
-class RequestLogManager(models.Manager):
-    """
-    Request log model manager.
-    """
-
-    def get_requests(self):
-
-        return self.all()[:10]
-
-class BookLogManager(models.Manager):
-    """
-    Book log model manager.
-    """
-
-    def get_book_logs(self):
-
-        return self.all()
+        

@@ -1,4 +1,4 @@
-from core.models import RequestLog
+from core.models.request_log import RequestLog
 
 class RequestLogMiddleware:
     def __init__(self, get_response):
