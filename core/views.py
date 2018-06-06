@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
 
-from core.models import Book
+from core.models import Book, RequestLog
 from core.forms import BookForm
 
 # Create your views here.
 
 def books(request):
-    books = Book.objects.get_books()
+    if request.method == "POST":
+        if request.POST.get('asc'):
+            books = Book.objects.get_books_asc_publish()
+        if request.POST.get('desc'):
+            books = Book.objects.get_books_desc_publish()                
+    else:     
+        books = Book.objects.get_books()
 
     return render(request, 'books.html', {'books': books})
 
@@ -26,3 +32,8 @@ def edit_books(request):
     form = BookForm()
 
     return render(request, 'edit_books.html', {'forms': forms, 'form': form})
+
+def requests_log(request):
+    requests = RequestLog.objects.get_requests()
+
+    return render(request, 'requests_log.html', {'requests': requests})

@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <form method="POST"  class="post-form">
+        {% csrf_token %}
+        <button type="submit" class="save btn btn-default" name="asc" value="asc">ASC</button>
+    </form>
+    <form method="POST"  class="post-form">
+        {% csrf_token %}
+        <button type="submit" class="save btn btn-default" name="desc" value="desc">DESC</button>
+    </form>
+    <a href="/admin">Admin Page</a>
+    <br>
+    <a href="/edit-books">Edit Books</a>
     {% for book in books %}
         <div class="book">
-            <h1>{{ book.title }}</a></h1>
+            <h1>{{ book.title }}</h1>
             <p>Author: {{ book.author|linebreaksbr }}</p>
             <p>ISBN: {{ book.ISBN|linebreaksbr }}</p>
             <p>Price: {{ book.price|linebreaksbr }}</p>

@@ -1,26 +1,24 @@
-import json
+from core.models import RequestLog
 
 class RequestLogMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        # One-time configuration and initialization.
 
     def __call__(self, request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
-        with open('log.txt', 'a') as log:
-            if request.method == "GET":
-                log.write(str(request) + '\n')
-                log.write(str(request.GET) + '\n')
-                log.write(str(request.META) + '\n')
-            if request.method == "POST":
-                log.write(str(request) + '\n')
-                log.write(str(request.POST) + '\n')
-                log.write(str(request.META) + '\n')
-
+        if request.method == "GET":
+            request_row = RequestLog()
+            request_row.request = str(request)
+            request_row.parameters = str(request.GET)
+            request_row.meta = str(request.META)
+            request_row.cookies = str(request.COOKIES)
+            request_row.save()
+        if request.method == "POST":
+            request_row = RequestLog()
+            request_row.request = str(request)
+            request_row.parameters = str(request.POST)
+            request_row.meta = str(request.META)
+            request_row.cookies = str(request.COOKIES)
+            request_row.save()
         response = self.get_response(request)
-
-        # Code to be executed for each request/response after
-        # the view is called.
 
         return response

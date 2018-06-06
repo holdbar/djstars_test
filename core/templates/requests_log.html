@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for request in requests %}
+        <div class="request">
+            <p>Created: {{ request.created|linebreaksbr }}</p>
+            <p>Request: {{ request.request|linebreaksbr }}</p>
+            <p>Parameters: {{ request.parameters|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

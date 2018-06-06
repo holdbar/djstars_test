@@ -17,5 +17,8 @@ loaddata:
 createsuperuser:
 	python manage.py createsuperuser
 
+collectstatic:
+	python manage.py collectstatic
+
 runserver:
 	python manage.py runserver 0.0.0.0:8080
