@@ -13,7 +13,7 @@
     <br>
     <a href="/edit-books">Edit Books</a>
     {% for book in books %}
-        <div class="book">
+        <div class="container">
             <h1>{{ book.title }}</h1>
             <p>Author: {{ book.author|linebreaksbr }}</p>
             <p>ISBN: {{ book.ISBN|linebreaksbr }}</p>

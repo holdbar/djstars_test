@@ -3,7 +3,7 @@
 
 
 {% block content %}
-    <div class="book">
+    <div class="container">
         <form method="POST"  class="post-form">
             {% csrf_token %}
             {{ form.as_p }}
@@ -12,7 +12,7 @@
         <hr/>
     </div>
     {% for form in forms %}
-        <div class="book">
+        <div class="container">
             <form method="POST"  class="post-form">
                 {% csrf_token %}
                 <input type="hidden" name="pk" value="{{ form.0 }}">

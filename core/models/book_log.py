@@ -13,9 +13,8 @@ class BookLog(models.Model):
     title = models.CharField(verbose_name=_("title"), max_length=256, db_index=True, editable=False)
     author = models.CharField(verbose_name=_("author"), max_length=256, db_index=True, editable=False)
     action = models.CharField(verbose_name=_("action"), max_length=16, db_index=True, editable=False)
-    change_field = models.CharField(verbose_name=_("change field"), max_length=16, blank=True, null=True, db_index=True, editable=False)
-    old_value = models.CharField(verbose_name=_("old value"), max_length=256, blank=True, null=True, editable=False)
-    new_value = models.CharField(verbose_name=_("new value"), max_length=256, blank=True, null=True, editable=False)
+    old_values = models.CharField(verbose_name=_("old values"), max_length=1024, blank=True, null=True, editable=False)
+    new_values = models.CharField(verbose_name=_("new values"), max_length=1024, blank=True, null=True, editable=False)
     created = models.DateTimeField(verbose_name=_("created date/time"), blank=True, null=True, db_index=True, auto_now_add=True)
 
     objects = BookLogManager()

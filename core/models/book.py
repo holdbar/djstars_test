@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
 
 from core.models.book_log import BookLog
 from core.managers.book import BookManager
-from core.signals.book import post_save_book
+from core.signals.book import post_save_book, pre_delete_book
 
 
 class Book(models.Model):
@@ -33,3 +33,5 @@ class Book(models.Model):
         return self.title
         
 post_save.connect(post_save_book, sender=Book)
+pre_delete.connect(pre_delete_book, sender=Book)
+

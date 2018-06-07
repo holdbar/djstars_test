@@ -2,10 +2,12 @@
 
 {% block content %}
     {% for request in requests %}
-        <div class="request">
+        <div class="container">
             <p>Created: {{ request.created|linebreaksbr }}</p>
             <p>Request: {{ request.request|linebreaksbr }}</p>
             <p>Parameters: {{ request.parameters|linebreaksbr }}</p>
         </div>
+        <hr>
+
     {% endfor %}
 {% endblock %}

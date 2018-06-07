@@ -8,14 +8,14 @@ class RequestLogMiddleware:
         if request.method == "GET":
             request_row = RequestLog()
             request_row.request = str(request)
-            request_row.parameters = str(request.GET)
+            request_row.parameters = str(dict(request.GET))
             request_row.meta = str(request.META)
             request_row.cookies = str(request.COOKIES)
             request_row.save()
         if request.method == "POST":
             request_row = RequestLog()
             request_row.request = str(request)
-            request_row.parameters = str(request.POST)
+            request_row.parameters = str(dict(request.POST))
             request_row.meta = str(request.META)
             request_row.cookies = str(request.COOKIES)
             request_row.save()

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Created</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+            <th>Old Value</th>
+            <th>New Value</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for book_log in book_logs %}
+            <tr>
+                <td>{{ book_log.created }}</td>
+                <td>{{ book_log.title }}</td>
+                <td>{{ book_log.author }}</td>
+                <td>{{ book_log.action }}</td>
+                <td>{{ book_log.old_values }}</td>
+                <td>{{ book_log.new_values }}</td>       
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>
+    
+{% endblock %}
