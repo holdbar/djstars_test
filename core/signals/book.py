@@ -38,8 +38,18 @@ def post_save_book(sender, instance, created, **kwargs):
     :type kwargs: dict.
     '''
 
-    if created:        
-        BookLog.objects.create(title=instance.title, author=instance.author, action='created')
+    if created:
+        new_values = {
+            'title': instance.title,
+            'author': instance.author,
+            'ISBN': instance.ISBN,
+            'price': instance.price,
+            'publish_date': instance.publish_date
+        }        
+        BookLog.objects.create(title=instance.title, 
+                               author=instance.author, 
+                               action='created',
+                               new_values=new_values)
     else:
         old_values = {
             'title': instance._old_title,
