@@ -4,7 +4,7 @@ from core.models.book import Book
 from core.forms.book import BookForm
 
 def edit_books(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         if request.POST.get('pk'):
             book = Book.objects.get_book(request.POST.get('pk'))
             Book.objects.set_old_instance(book)

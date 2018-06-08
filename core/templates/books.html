@@ -1,23 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="POST"  class="post-form">
-        {% csrf_token %}
-        <button type="submit" class="save btn btn-default" name="asc" value="asc">ASC</button>
-    </form>
-    <form method="POST"  class="post-form">
-        {% csrf_token %}
-        <button type="submit" class="save btn btn-default" name="desc" value="desc">DESC</button>
-    </form>
-    <a href="/admin">Admin Page</a>
-    <br>
-    <a href="/edit-books">Edit Books</a>
-    {% for book in books %}
-        <div class="container">
-            <h1>{{ book.title }}</h1>
-            <p>Author: {{ book.author|linebreaksbr }}</p>
-            <p>ISBN: {{ book.ISBN|linebreaksbr }}</p>
-            <p>Price: {{ book.price|linebreaksbr }}</p>
+    <div class="content container">
+        <h5>Links:</h5>
+        <ul class="list-unstyled">
+            <li>
+            <a href="/admin">Admin Page</a>
+            </li>
+            <li>
+            <a href="/edit-books">Edit Page</a>
+            </li>
+            <li>
+            <a href="/book-log">Book Log</a>
+            </li>
+            <li>
+            <a href="/requests-log">Requests Log</a>
+            </li>
+        </ul>
+        <div class="sort">
+            <h5>Sort Books:</h5>
+            <form method="POST"  class="post-form">
+                {% csrf_token %}
+                <button type="submit" class="save btn btn-default" name="asc" value="asc">ASC</button>
+            </form>
+            <form method="POST"  class="post-form">
+                {% csrf_token %}
+                <button type="submit" class="save btn btn-default" name="desc" value="desc">DESC</button>
+            </form>
         </div>
-    {% endfor %}
+    </div>
+    <div class="container">
+        <h5>Books:</h5>
+        {% for book in books %}
+            <div class="container">
+                <h3>{{ book.title }}</h3>
+                <p>Author: {{ book.author|linebreaksbr }}</p>
+                <p>ISBN: {{ book.ISBN|linebreaksbr }}</p>
+                <p>Price: {{ book.price|linebreaksbr }}</p>
+            </div>
+    
+        {% endfor %}
+    </div>
 {% endblock %}

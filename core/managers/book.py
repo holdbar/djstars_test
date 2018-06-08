@@ -1,9 +1,9 @@
 from django.db import models
 
 class BookManager(models.Manager):
-    """
+    '''
     Book model manager.
-    """
+    '''
 
     def set_old_instance(self, book):
         book._old_title = book.title

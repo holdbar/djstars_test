@@ -5,14 +5,14 @@ class RequestLogMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.method == "GET":
+        if request.method == 'GET':
             request_row = RequestLog()
             request_row.request = str(request)
             request_row.parameters = str(dict(request.GET))
             request_row.meta = str(request.META)
             request_row.cookies = str(request.COOKIES)
             request_row.save()
-        if request.method == "POST":
+        if request.method == 'POST':
             request_row = RequestLog()
             request_row.request = str(request)
             request_row.parameters = str(dict(request.POST))

@@ -1,7 +1,7 @@
 from core.models.book_log import BookLog
 
 def pre_delete_book(sender, instance, **kwargs):
-    """
+    '''
     Add book changes in log on book deletion.
 
     :param sender: sender model class.
@@ -10,7 +10,7 @@ def pre_delete_book(sender, instance, **kwargs):
     :type instance: core.models.book.Book.
     :param kwargs: additional args.
     :type kwargs: dict.
-    """
+    '''
 
     old_values = {
             'title': instance.title,
@@ -25,7 +25,7 @@ def pre_delete_book(sender, instance, **kwargs):
                                old_values=old_values)
 
 def post_save_book(sender, instance, created, **kwargs):
-    """
+    '''
     Add book changes in log on book creation/edition.
 
     :param sender: sender model class.
@@ -36,7 +36,7 @@ def post_save_book(sender, instance, created, **kwargs):
     :type created: bool
     :param kwargs: additional args.
     :type kwargs: dict.
-    """
+    '''
 
     if created:        
         BookLog.objects.create(title=instance.title, author=instance.author, action='created')

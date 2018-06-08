@@ -2,14 +2,12 @@
 <html>
     <head>
         <title>Book Store</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <!-- <link rel="stylesheet" href="{% static 'css/store.css' %}"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/store.css' %}">
     </head>
     <body>
         <div class="page-header">
-            <h1><a href="/">Book Store</a></h1>
+            <h1 class="h1"><a href="/">Book Store</a></h1>
         </div>
         <div class="content container">
             <div class="row">
@@ -24,7 +22,8 @@
         <div class="container-fluid text-center text-md-left">
             <div class="row">   
                 <div class="col-md-6 mt-md-0 mt-3">
-                <h5 class="text-uppercase"><a href="/">Book Store</a></h5>    
+                <h5 class="text-uppercase"><a href="/">Book Store</a></h5>   
+                <p>Just another store to buy some books you need.</p> 
             </div>
             <hr class="clearfix w-100 d-md-none pb-3">
             <div class="col-md-6 mb-md-0 mb-3">
@@ -36,12 +35,18 @@
                 <li>
                   <a href="/edit-books">Edit Page</a>
                 </li>
-              </ul>
+                <li>
+                  <a href="/book-log">Book Log</a>
+                </li>
+                <li>
+                  <a href="/requests-log">Requests Log</a>
+                </li>
+            </ul>
             </div>
           </div>    
         </div>
         <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="http://djstars-test.holdbar.pp.ua"> djstars-test.holbar.pp.ua</a>
+          <a href="http://djstars-test.holdbar.pp.ua"> Book Store</a>
         </div>     
       </footer>
 </html>
